@@ -1,0 +1,21 @@
+.red{
+  color:red;
+}
+body{
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-image: url("../src/assets/background.jpg");
+  background-attachment: scroll;
+}
+
+.glassLogin{
+width:50%;
+height: 50vh;  
+background: rgba(255, 255, 255, 0.0);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3px);
+-webkit-backdrop-filter: blur(3px);
+
+border: 1px solid rgba(255, 255, 255, 0.63);
+}
