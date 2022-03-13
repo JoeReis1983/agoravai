@@ -1,7 +1,8 @@
 
 <template>
-<div>
-  <div class="centralizado">
+  <div>
+    
+   <div class="centralizado">
     <div class="glassLogin">
       <div class="field">
         <p class="control has-icons-left has-icons-right centralizado">
@@ -24,7 +25,7 @@
       </div>
       <div class="field">
         <p class="control">
-          <button class="button is-success">
+          <button class="button is-success" @click="autenticar()">
             Login
           </button>
         </p>
@@ -32,11 +33,24 @@
       
     </div>
 
-  </div>
+   </div>
   </div>
 </template>
 
 <script>
-
+import router from "../router"
+export default{
+  data() {
+    return {
+      
+    }
+  },
+  methods: { 
+    autenticar(){
+      alert()
+      router.replace({ path: '/about' })
+    }
+  },
+}
 
 </script>

@@ -1,12 +1,12 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import Login from '@/components/Login.vue'
+//import Login from '@/views/Login.vue'
 </script>
 
 <template>
-<div>
+<!-- <div>
   <Login></Login>
-</div>
+</div> -->
   <!-- <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
@@ -20,6 +20,6 @@ import Login from '@/components/Login.vue'
     </div>
   </header> -->
 
-  <!-- <RouterView /> -->
+  <RouterView />
 </template>
 
