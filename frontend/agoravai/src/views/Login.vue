@@ -2,10 +2,13 @@
 <template>
   <div>
     
-   <div class="centralizado">
+  
     <div class="glassLogin">
-      <div class="field">
-        <p class="control has-icons-left has-icons-right centralizado">
+
+      <div class="columns is-flex is-mobile">
+  <div class="column is-11 is-offset-1">
+    <div class="field ">
+        <p class="control has-icons-left has-icons-right ">
           <input class="input" type="email" placeholder="Email">
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
@@ -25,11 +28,16 @@
       </div>
       <div class="field">
         <p class="control">
-          <button class="button is-success" @click="autenticar()">
+          <button class="button is-dark is-success is-fullwidth" @click="autenticar()">
             Login
           </button>
         </p>
-      </div>>
+      </div>
+
+  
+</div>
+
+      
       
     </div>
 
@@ -48,7 +56,7 @@ export default{
   methods: { 
     autenticar(){
       alert()
-      router.replace({ path: '/about' })
+      router.replace({ path: '/principal' })
     }
   },
 }
