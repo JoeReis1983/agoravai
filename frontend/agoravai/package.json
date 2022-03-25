@@ -14,7 +14,8 @@
     "bulma": "^0.9.3",
     "sass": "^1.49.9",
     "vue": "^3.2.31",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "vue-star-rating": "^2.1.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^6.0.0",

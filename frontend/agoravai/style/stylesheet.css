@@ -2,11 +2,9 @@
   color:red;
 }
 html{
-  
-  /*background-repeat: no-repeat;
+  background-repeat: no-repeat;
   background-size: 100% auto;
-   background-image: url("../src/assets/background.jpg"); */
-  
+  background-image: url("../src/assets/background.jpg");
 }
 
 .glassLogin{
@@ -26,4 +24,25 @@ border: 1.5px solid rgba(2, 2, 2, 0.63);
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+.boxGlass{
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgb(252, 252, 252);
+  backdrop-filter: blur(10.6px);
+  -webkit-backdrop-filter: blur(10.6px);
+  border: 1px solid rgba(207, 80, 6, 0.75)75);
+}
+.nomeBarra{
+  font-weight: 500;
+}
+.boxNota{
+  float: right;
+  margin-top: -3vh;
+  margin-right: 1vh;
+  border-radius: 8vh;
+  border-width: 0.1vh;
+  font-size: 4vh;
+  color: gold;
+  background-color: black;
 }
