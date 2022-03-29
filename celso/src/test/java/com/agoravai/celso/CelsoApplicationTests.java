@@ -9,5 +9,10 @@ class CelsoApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+	@Test
+	void test1(){
+		
+		System.out.print("chegou");
+	}
 
 }
