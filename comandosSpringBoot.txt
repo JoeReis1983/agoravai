@@ -1,0 +1,3 @@
+mvn spring-boot:test
+mvn spring-boot:run
+mvn install
