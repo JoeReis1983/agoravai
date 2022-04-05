@@ -1,64 +1,57 @@
 package com.agoravai.celso.entity;
 
+import javax.annotation.processing.Generated;
 import javax.persistenc.Entity;
 import javax.persistenc.Table;
 
 
 @Entity
 @Table(name = "usr_usuario")
-public class Usuario {
-  @JsonView(View.UsuarioCompleto.class)
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "usr_id")
-  private Long id;
+public class Usuario {  
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name="usr_id")
+    private Long id;
 
-  @JsonView({View.UsuarioResumo.class, View.AutorizacaoResumo.class})
-  @Column(name = "usr_nome")
-  private String nome;
+    @Column(name="usr_nome")
+    private String nome;
 
-  @Column(name = "usr_senha")
-  private String senha;
+    @Column(name="usr_senha")
+    private String senha;
 
-  @JsonView(View.UsuarioResumo.class)
-  @ManyToMany(fetch = FetchType.EAGER)
-  @JoinTable(name = "uau_usuario_autorizacao",
-      joinColumns = { @JoinColumn(name = "usr_id")},
-      inverseJoinColumns = { @JoinColumn(name = "aut_id") }
-      )
-  private Set<Autorizacao> autorizacoes;
+    @Column(name="usr_role")
+    private String role;
 
-  public Long getId() {
-      return this.id;
-  }
+    public Long getId() {
+        return this.id;
+    }
 
-  public void setId(Long id) {
-      this.id = id;
-  }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public String getNome() {
-      return this.nome;
-  }
+    public String getNome() {
+        return this.nome;
+    }
 
-  public void setNome(String nome) {
-      this.nome = nome;
-  }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-  public String getSenha() {
-      return this.senha;
-  }
+    public String getSenha() {
+        return this.senha;
+    }
 
-  public void setSenha(String senha) {
-      this.senha = senha;
-  }
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
-  public Set<Autorizacao> getAutorizacoes() {
-      return this.autorizacoes;
-  }
+    public String getRole() {
+        return this.role;
+    }
 
-  public void setAutorizacoes(Set<Autorizacao> autorizacoes) {
-      this.autorizacoes = autorizacoes;
-  }
-
-  
+    public void setRole(String role) {
+        this.role = role;
+    }
+    
 }
