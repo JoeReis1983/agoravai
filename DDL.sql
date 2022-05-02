@@ -24,7 +24,7 @@ create table frases(
   frase_fonte varchar (100) not null,
   frase_categoria varchar (50) not null,
   frase_data varchar (10) not null,
-)
+);
 insert into usr_usuario (usr_nome, usr_senha,usr_role)
     values ('admin', '$2a$10$i3.Z8Yv1Fwl0I5SNjdCGkOTRGQjGvHjh/gMZhdc3e7LIovAklqM6C','admin');
 insert into usr_usuario (usr_nome, usr_senha,usr_role)
