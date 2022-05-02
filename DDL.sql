@@ -12,7 +12,7 @@ create table usr_usuario (
   usr_senha varchar(100) not null,
   usr_role varchar(10) not null,
   primary key (usr_id),
-  unique key uni_usuario_nome (usr_nome)
+  unique key uni_usuario_nome (usr_nome),
   
 );
 create table frases(
