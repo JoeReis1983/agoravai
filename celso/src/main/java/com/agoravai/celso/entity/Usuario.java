@@ -1,26 +1,46 @@
 package com.agoravai.celso.entity;
 
-import javax.annotation.processing.Generated;
-import javax.persistenc.Entity;
-import javax.persistenc.Table;
+import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import com.agoravai.celso.controller.View;
 
 @Entity
-@Table(name = "usr_usuario")
-public class Usuario {  
+@Table(name = "tbl_usuario")
+public class Usuario {
+
+    @JsonView(View.UsuarioCompleto.class)
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="usr_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "userId")
     private Long id;
 
-    @Column(name="usr_nome")
+    @JsonView({View.UsuarioResumo.class, View.AutorizacaoResumo.class})
+    @Column(name = "userNome")
     private String nome;
 
-    @Column(name="usr_senha")
+    @Column(name = "userSenha")
     private String senha;
 
-    @Column(name="usr_role")
-    private String role;
+    @JsonView(View.UsuarioResumo.class)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "uau_usuario_perfil",
+        joinColumns = { @JoinColumn(name = "userId")},
+        inverseJoinColumns = { @JoinColumn(name = "perfilId") }
+        )
+    private Set<Autorizacao> autorizacoes;
 
     public Long getId() {
         return this.id;
@@ -46,12 +66,12 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getRole() {
-        return this.role;
+    public Set<Autorizacao> getAutorizacoes() {
+        return this.autorizacoes;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setAutorizacoes(Set<Autorizacao> autorizacoes) {
+        this.autorizacoes = autorizacoes;
     }
-    
+
 }

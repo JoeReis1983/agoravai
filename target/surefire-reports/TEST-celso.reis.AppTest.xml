@@ -33,7 +33,7 @@
     <property name="java.class.version" value="55.0"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="5.16.14-051614-generic"/>
+    <property name="os.version" value="5.16.20-051620-generic"/>
     <property name="library.jansi.path" value="/home/gitpod/.sdkman/candidates/maven/current/lib/jansi-native"/>
     <property name="user.home" value="/home/gitpod"/>
     <property name="user.timezone" value="Etc/UTC"/>

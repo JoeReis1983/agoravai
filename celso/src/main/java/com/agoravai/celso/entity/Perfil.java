@@ -8,8 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -18,29 +16,22 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.agoravai.celso.controller.View;
 
 @Entity
-@Table(name = "usr_usuario")
-public class Usuario {
+@Table(name = "tbl_perfil")
+public class Perfil {
 
     @JsonView(View.UsuarioCompleto.class)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "usr_id")
+    @Column(name = "pefilId")
     private Long id;
 
     @JsonView({View.UsuarioResumo.class, View.AutorizacaoResumo.class})
-    @Column(name = "usr_nome")
+    @Column(name = "perfilNome")
     private String nome;
 
-    @Column(name = "usr_senha")
-    private String senha;
-
-    @JsonView(View.UsuarioResumo.class)
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "uau_usuario_autorizacao",
-        joinColumns = { @JoinColumn(name = "usr_id")},
-        inverseJoinColumns = { @JoinColumn(name = "aut_id") }
-        )
-    private Set<Autorizacao> autorizacoes;
+    @JsonView(View.AutorizacaoResumo.class)
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "autorizacoes")
+    private Set<Usuario> usuarios;
 
     public Long getId() {
         return this.id;
@@ -58,20 +49,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getSenha() {
-        return this.senha;
+    public Set<Usuario> getUsuarios() {
+        return this.usuarios;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public Set<Autorizacao> getAutorizacoes() {
-        return this.autorizacoes;
-    }
-
-    public void setAutorizacoes(Set<Autorizacao> autorizacoes) {
-        this.autorizacoes = autorizacoes;
+    public void setUsuarios(Set<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 
 }
