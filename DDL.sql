@@ -15,9 +15,9 @@ create table tbl_usuario (
 );
 
 create table tbl_perfil (
-  pefilId bigint unsigned not null auto_increment,
+  perfilId bigint unsigned not null auto_increment,
   perfilNome varchar(20) not null,
-  primary key (pefilId),
+  primary key (perfilId),
   unique key uni_aut_nome (perfilNome)
 );
 
