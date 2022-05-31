@@ -1,1 +1,7 @@
+/workspace/agoravai/celso/src/main/java/com/agoravai/celso/entity/Usuario.java
+/workspace/agoravai/celso/src/main/java/com/agoravai/celso/service/SegurancaService.java
+/workspace/agoravai/celso/src/main/java/com/agoravai/celso/entity/Perfil.java
+/workspace/agoravai/celso/src/main/java/com/agoravai/celso/repository/PerfilRepository.java
 /workspace/agoravai/celso/src/main/java/com/agoravai/celso/CelsoApplication.java
+/workspace/agoravai/celso/src/main/java/com/agoravai/celso/repository/UsuarioRepository.java
+/workspace/agoravai/celso/src/main/java/com/agoravai/celso/service/SegurancaServiceImpl.java

@@ -1,5 +1,4 @@
 package com.agoravai.celso.repository;
-
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,9 +20,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
     @Query("select u from Usuario u where u.nome = ?1 and u.senha = ?2")
     public Usuario buscaUsuarioPorNomeESenha(String nome, String senha);
 
-    public List<Usuario> findByAutorizacoesNome(String autorizacao);
+    public List<Usuario> findByPerfisNome(String perfil);
 
-    @Query("select u from Usuario u inner join u.autorizacoes a where a.nome = ?1")
-    public List<Usuario> buscaPorNomeAutorizacao(String autorizacao);
+    @Query("select u from Usuario u inner join u.perfis a where a.nome = ?1")
+    public List<Usuario> buscaPorNomePerfil(String perfil);
     
 }

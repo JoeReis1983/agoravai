@@ -1,0 +1,7 @@
+com/agoravai/celso/repository/UsuarioRepository.class
+com/agoravai/celso/repository/PerfilRepository.class
+com/agoravai/celso/service/SegurancaService.class
+com/agoravai/celso/service/SegurancaServiceImpl.class
+com/agoravai/celso/CelsoApplication.class
+com/agoravai/celso/entity/Usuario.class
+com/agoravai/celso/entity/Perfil.class

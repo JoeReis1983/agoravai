@@ -11,26 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
-import com.agoravai.celso.controller.View;
-
 @Entity
 @Table(name = "tbl_perfil")
 public class Perfil {
 
-    @JsonView(View.UsuarioCompleto.class)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pefilId")
+    @Column(name = "perfilId")
     private Long id;
 
-    @JsonView({View.UsuarioResumo.class, View.AutorizacaoResumo.class})
     @Column(name = "perfilNome")
     private String nome;
 
-    @JsonView(View.AutorizacaoResumo.class)
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "autorizacoes")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "perfis")
     private Set<Usuario> usuarios;
 
     public Long getId() {

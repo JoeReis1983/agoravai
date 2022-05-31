@@ -1,5 +1,4 @@
 package com.agoravai.celso.entity;
-
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -13,37 +12,17 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
-import com.agoravai.celso.controller.View;
-
 @Entity
 @Table(name = "tbl_usuario")
 public class Usuario {
 
-    @JsonView(View.UsuarioCompleto.class)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userId")
     private Long id;
 
-    @JsonView({View.UsuarioResumo.class, View.AutorizacaoResumo.class})
-    @Column(name = "userNome")
-    private String nome;
-
-    @Column(name = "userSenha")
-    private String senha;
-
-    @JsonView(View.UsuarioResumo.class)
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "uau_usuario_perfil",
-        joinColumns = { @JoinColumn(name = "userId")},
-        inverseJoinColumns = { @JoinColumn(name = "perfilId") }
-        )
-    private Set<Autorizacao> autorizacoes;
-
     public Long getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(Long id) {
@@ -51,7 +30,7 @@ public class Usuario {
     }
 
     public String getNome() {
-        return this.nome;
+        return nome;
     }
 
     public void setNome(String nome) {
@@ -59,19 +38,33 @@ public class Usuario {
     }
 
     public String getSenha() {
-        return this.senha;
+        return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
     }
 
-    public Set<Autorizacao> getAutorizacoes() {
-        return this.autorizacoes;
+    public Set<Perfil> getPerfis() {
+        return perfis;
     }
 
-    public void setAutorizacoes(Set<Autorizacao> autorizacoes) {
-        this.autorizacoes = autorizacoes;
+    public void setPerfis(Set<Perfil> perfis) {
+        this.perfis = perfis;
     }
+
+    @Column(name = "userNome")
+    private String nome;
+
+    @Column(name = "userSenha")
+    private String senha;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "uau_usuario_perfil",
+        joinColumns = { @JoinColumn(name = "userId")},
+        inverseJoinColumns = { @JoinColumn(name = "perfilId") }
+        )
+    private Set<Perfil> perfis;
+
 
 }
