@@ -48,8 +48,8 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong>Administração</strong>
+          <a class="button is-primary" @click="cadastro">
+            <strong>Cadastro</strong>
           </a>
           <a class="button is-danger">
             Sair
@@ -65,3 +65,19 @@
 
 
 </style>
+<script>
+import router from "../router"
+export default{
+  data() {
+    return {
+      
+    }
+  },
+  methods: { 
+    cadastro(){
+      router.replace({ path: '/cadastro' })
+    }
+  },
+}
+
+</script>

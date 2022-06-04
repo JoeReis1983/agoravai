@@ -55,7 +55,7 @@ export default{
   },
   methods: { 
     autenticar(){
-      alert()
+      alert('Bem vindo')
       router.replace({ path: '/principal' })
     }
   },

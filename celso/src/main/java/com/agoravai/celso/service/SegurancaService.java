@@ -1,6 +1,7 @@
 package com.agoravai.celso.service;
 
 import java.util.List;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import com.agoravai.celso.entity.Usuario;
 import com.agoravai.celso.entity.Perfil;
 

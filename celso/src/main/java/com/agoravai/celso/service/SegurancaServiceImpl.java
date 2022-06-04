@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.User;
@@ -19,6 +20,7 @@ import com.agoravai.celso.exception.RegistroException;
 import com.agoravai.celso.repository.PerfilRepository;
 import com.agoravai.celso.repository.UsuarioRepository;
 
+
 @Service("SegurancaService")
 public class SegurancaServiceImpl implements SegurancaService {
 
@@ -27,6 +29,10 @@ public class SegurancaServiceImpl implements SegurancaService {
 
     @Autowired
     private UsuarioRepository usuarioRepo;
+
+    @Autowired
+    private PasswordEncoder passEncoder;
+  
 
     @Transactional
     public Usuario criarUsuario(String nome, String senha, String perfil) {
@@ -45,7 +51,7 @@ public class SegurancaServiceImpl implements SegurancaService {
         return usuario;
     }
     @Override
-    // @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public List<Usuario> buscarTodosUsuarios() {
       return usuarioRepo.findAll();
     }
@@ -71,7 +77,7 @@ public class SegurancaServiceImpl implements SegurancaService {
   }
 
   @Override
-//   @PreAuthorize("isAuthenticated()")
+  @PreAuthorize("isAuthenticated()")
   public Perfil buscarPerfilPorNome(String nome) {
     Perfil perfil = autRepo.findByNome(nome);
     if (perfil != null) {
@@ -80,7 +86,7 @@ public class SegurancaServiceImpl implements SegurancaService {
     throw new RegistroException("Autorização não encontrada!");
   }
 
-//   @Override
+  // @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     Usuario usuario = usuarioRepo.findByNome(username);
     if (usuario == null) {
