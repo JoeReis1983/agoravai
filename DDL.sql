@@ -4,7 +4,7 @@ use agoraVai;
 
 create user 'admin'@'localhost' identified by 'admin123';
 
-grant select, insert, delete, update on agoraVai.* to admin@'localhost';
+grant select, insert, delete, update on agoraVai.* to user@'localhost';
 
 create table tbl_usuario (
   userId bigint unsigned not null auto_increment,
