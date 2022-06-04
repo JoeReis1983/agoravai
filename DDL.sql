@@ -37,4 +37,6 @@ insert into uau_usuario_perfil values (1, 1);
 
 insert into tbl_usuario (userNome, userSenha)
     values ('celso', 'admin123');
+insert into tbl_perfil (perfilNome)
+    values ('ROLE_USUARIO');
 insert into uau_usuario_perfil values (2, 1);

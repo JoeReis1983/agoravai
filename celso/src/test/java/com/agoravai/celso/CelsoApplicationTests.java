@@ -70,12 +70,6 @@ class CelsoApplicationTests {
     }
 
     @Test
-    void testaUsuario() {
-        Perfil aut = autRepo.findById(1L).get();
-        assertEquals("Usuario", aut.getUsuarios().iterator().next().getNome());
-    }
-
-    @Test
     void testaBuscaUsuarioNomeContains() {
         List<Usuario> usuarios = usuarioRepo.findByNomeContainsIgnoreCase("m");
         assertFalse(usuarios.isEmpty());
@@ -95,13 +89,13 @@ class CelsoApplicationTests {
 
     @Test
     void testaBuscaUsuarioNomeSenha() {
-        Usuario usuario = usuarioRepo.findByNomeAndSenha("Usuario", "SenhaF0rte");
+        Usuario usuario = usuarioRepo.findByNomeAndSenha("celso", "admin123");
         assertNotNull(usuario);
     }
 
     @Test
     void testaBuscaUsuarioNomeSenhaQuery() {
-        Usuario usuario = usuarioRepo.buscaUsuarioPorNomeESenha("Usuario", "SenhaF0rte");
+        Usuario usuario = usuarioRepo.buscaUsuarioPorNomeESenha("celso", "admin123");
         assertNotNull(usuario);
     }
 
@@ -111,7 +105,7 @@ class CelsoApplicationTests {
         assertFalse(usuarios.isEmpty());
     }
 
-    @Testcd
+    @Test
     void testaBuscaUsuarioNomePerfilQuery() {
         List<Usuario> usuarios = usuarioRepo.buscaPorNomePerfil("ROLE_ADMIN");
         assertFalse(usuarios.isEmpty());
