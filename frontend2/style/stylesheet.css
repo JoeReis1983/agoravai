@@ -1,0 +1,77 @@
+.red{
+  color:red;
+}
+html{
+  background-color: rgb(255, 255, 255) !important;
+}
+
+.glassLogin{
+width:80%;
+height: 50vh;  
+background: rgba(255, 255, 255, 0.137);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(255, 255, 255, 0.521);
+backdrop-filter: blur(7px);
+-webkit-backdrop-filter: blur(3px);
+border: 1.5px solid rgba(51, 0, 0, 0.541);
+
+  display: flex;
+  margin-top: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.glassCadastro{
+  width:30%;
+  height: 70vh;  
+  background: rgba(12, 12, 12, 0.514);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border: 1.5px solid rgba(2, 2, 2, 0.63);
+  
+    display: flex;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+.boxGlass{
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgb(252, 252, 252);
+  backdrop-filter: blur(10.6px);
+  -webkit-backdrop-filter: blur(10.6px);
+  border: 1px solid rgba(207, 80, 6, 0.75)75);
+}
+.nomeBarra{
+  font-weight: 500;
+}
+.boxNota{
+  float: right;
+  margin-top: -3vh;
+  margin-right: 1vh;
+  border-radius: 8vh;
+  border-width: 0.1vh;
+  font-size: 4vh;
+  color: gold;
+  background-color: black;
+}
+.titleGlass{
+  font-size: 4vh;
+  font-weight: 300;
+  color: white;
+  margin-top:-20vh;
+  margin-right: 10px;
+  margin-bottom: 2vh;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.24);
+
+
+
+}

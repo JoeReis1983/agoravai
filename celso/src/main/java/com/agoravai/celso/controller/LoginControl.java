@@ -25,10 +25,13 @@ public class LoginControl {
 
   @PostMapping()
   public Login autenticar(@RequestBody Login login) throws JsonProcessingException {
+    System.out.println("autenticar");
     Authentication auth = new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword());
     auth = authManager.authenticate(auth);
+    System.out.println(auth);
     login.setPassword(null);
     login.setToken(JwtUtils.generateToken(auth));
+    System.out.println(login);
     return login;
   }
   

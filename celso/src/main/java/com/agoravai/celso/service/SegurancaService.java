@@ -15,5 +15,7 @@ public interface SegurancaService {
     public Usuario buscarUsuarioPorNome(String nome);
 
     public Perfil buscarPerfilPorNome(String nome);
+
+    // public UserDetails loadUserByUsername(String username);
     
 }

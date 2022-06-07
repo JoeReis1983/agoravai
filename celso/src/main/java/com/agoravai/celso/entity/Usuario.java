@@ -21,6 +21,20 @@ public class Usuario {
     @Column(name = "userId")
     private Long id;
 
+    
+
+    @Column(name = "userNome")
+    private String nome;
+
+    @Column(name = "userSenha")
+    private String senha;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "uau_usuario_perfil",
+        joinColumns = { @JoinColumn(name = "userId")},
+        inverseJoinColumns = { @JoinColumn(name = "perfilId") }
+        )
+    private Set<Perfil> perfis;
     public Long getId() {
         return id;
     }
@@ -52,19 +66,6 @@ public class Usuario {
     public void setPerfis(Set<Perfil> perfis) {
         this.perfis = perfis;
     }
-
-    @Column(name = "userNome")
-    private String nome;
-
-    @Column(name = "userSenha")
-    private String senha;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "uau_usuario_perfil",
-        joinColumns = { @JoinColumn(name = "userId")},
-        inverseJoinColumns = { @JoinColumn(name = "perfilId") }
-        )
-    private Set<Perfil> perfis;
 
 
 }

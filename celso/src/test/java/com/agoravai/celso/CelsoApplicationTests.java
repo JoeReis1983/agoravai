@@ -37,7 +37,7 @@ class CelsoApplicationTests {
     
       @BeforeAll
       
-      static void init(@Autowired JdbcTemplate jdbcTemplate) {
+      // static void init(@Autowired JdbcTemplate jdbcTemplate) {
         // jdbcTemplate.update(
         //     "insert into tbl_usuario (userNome, userSenha) values(?,?)",
         //         "Minedaso", "Senh@F0rte");
@@ -47,11 +47,12 @@ class CelsoApplicationTests {
         // jdbcTemplate.update(
         //     "insert into uau_usuario_perfil (userId, perfilId) values(?,?)",
         //         1L, 2);
-      }
+      // }
 
       
     
     @Test
+    
     void testaInsercao() {
         Usuario usuario = new Usuario();
         usuario.setNome("Usuario");

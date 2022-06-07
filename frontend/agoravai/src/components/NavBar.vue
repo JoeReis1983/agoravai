@@ -15,16 +15,16 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item">
-        Melhores
+        Politica
       </a>
 
       <a class="navbar-item">
-        Novas
+        Esportes
       </a>
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
-          Tipos
+          Internacional
         </a>
 
         <div class="navbar-dropdown">

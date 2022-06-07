@@ -1,4 +1,5 @@
 package com.agoravai.celso.service;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -21,10 +22,11 @@ import com.agoravai.celso.repository.PerfilRepository;
 import com.agoravai.celso.repository.UsuarioRepository;
 
 
-@Service("SegurancaService")
+@Service("segurancaService")
 public class SegurancaServiceImpl implements SegurancaService {
 
     @Autowired
+    
     private PerfilRepository autRepo;
 
     @Autowired
@@ -32,6 +34,9 @@ public class SegurancaServiceImpl implements SegurancaService {
 
     @Autowired
     private PasswordEncoder passEncoder;
+
+
+
   
 
     @Transactional
@@ -51,7 +56,7 @@ public class SegurancaServiceImpl implements SegurancaService {
         return usuario;
     }
     @Override
-    @PreAuthorize("hasRole('ADMIN')")
+    // @PreAuthorize("hasRole('ADMIN')")
     public List<Usuario> buscarTodosUsuarios() {
       return usuarioRepo.findAll();
     }
