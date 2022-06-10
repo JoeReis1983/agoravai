@@ -1,42 +1,49 @@
-create schema agoraVai;
+drop user 'user'@'localhost';
+drop schema agenda;
+create schema agenda;
 
-use agoraVai;
+use agenda;
 
-create user 'admin'@'localhost' identified by 'admin123';
+create user 'user'@'localhost' identified by 'pass123';
 
-grant select, insert, delete, update on agoraVai.* to user@'localhost';
+grant select, insert, delete, update on agenda.* to user@'localhost';
 
-create table tbl_usuario (
-  userId bigint unsigned not null auto_increment,
-  userNome varchar(20) not null,
-  userSenha varchar(100) not null,
-  primary key (userId),
-  unique key uni_usuario_nome (userNome)
+create table usr_usuario (
+  usr_id bigint unsigned not null auto_increment,
+  usr_nome varchar(20) not null,
+  usr_senha varchar(100) not null,
+  primary key (usr_id),
+  unique key uni_usuario_nome (usr_nome)
 );
 
-create table tbl_perfil (
-  perfilId bigint unsigned not null auto_increment,
-  perfilNome varchar(20) not null,
-  primary key (perfilId),
-  unique key uni_aut_nome (perfilNome)
+create table aut_autorizacao (
+  aut_id bigint unsigned not null auto_increment,
+  aut_nome varchar(20) not null,
+  primary key (aut_id),
+  unique key uni_aut_nome (aut_nome)
 );
 
-create table uau_usuario_perfil (
-  userId bigint unsigned not null,
-  perfilId bigint unsigned not null,
-  primary key (userId, perfilId),
-  foreign key aut_usuario_fk (userId) references tbl_usuario (userId) on delete restrict on update cascade,
-  foreign key aut_perfil_fk (perfilId) references tbl_perfil (perfilId) on delete restrict on update cascade
+create table uau_usuario_autorizacao (
+  usr_id bigint unsigned not null,
+  aut_id bigint unsigned not null,
+  primary key (usr_id, aut_id),
+  foreign key aut_usuario_fk (usr_id) references usr_usuario (usr_id) on delete restrict on update cascade,
+  foreign key aut_autorizacao_fk (aut_id) references aut_autorizacao (aut_id) on delete restrict on update cascade
 );
 
-insert into tbl_usuario (userNome, userSenha)
+create table ant_trabalho (
+  ant_id bigint unsigned not null auto_increment,
+  ant_titulo varchar(20) not null,
+  ant_texto varchar(100) not null,
+  primary key (ant_id),
+  unique key ant_trabalho_titulo (ant_titulo)
+);
+
+insert into usr_usuario (usr_nome, usr_senha)
     values ('admin', '$2a$10$i3.Z8Yv1Fwl0I5SNjdCGkOTRGQjGvHjh/gMZhdc3e7LIovAklqM6C');
-insert into tbl_perfil (perfilNome)
+insert into aut_autorizacao (aut_nome)
     values ('ROLE_ADMIN');
-insert into uau_usuario_perfil values (1, 1);
+insert into uau_usuario_autorizacao values (1, 1);
 
-insert into tbl_usuario (userNome, userSenha)
-    values ('celso', 'admin123');
-insert into tbl_perfil (perfilNome)
-    values ('ROLE_USUARIO');
-insert into uau_usuario_perfil values (2, 1);
+insert into ant_trabalho (ant_titulo, ant_texto)
+    values ('teste', 'teste');

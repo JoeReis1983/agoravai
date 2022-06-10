@@ -13,7 +13,7 @@
     </div>
     <div class="field ">
         <p class="control has-icons-left has-icons-right ">
-          <input class="input" v-model="novo.email" type="email" placeholder="Email">
+          <input class="input" v-model="novo.nome" type="text" placeholder="Login">
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
           </span>
@@ -40,7 +40,7 @@
       </div>
       <div class="field">
         <p class="control">
-          <button class="button is-dark is-success is-fullwidth" @click="autenticar()">
+          <button class="button is-dark is-success is-fullwidth" @click="cadastrar()">
             Cadastrar
           </button>
         </p>
@@ -56,12 +56,13 @@
 </template>
 
 <script>
+import axios from "axios"
 import router from "../router"
 export default{
   data() {
     return {
       novo:{
-        email:'',
+        nome:'',
         senha:''
       },
       confirmaSenha:''
@@ -69,10 +70,19 @@ export default{
     }
   },
   methods: { 
-    autenticar(){
+    cadastrar(){
+      axios.defaults.headers.common['Authorization'] = "eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyRGV0YWlscyI6IntcInVzZXJuYW1lXCI6XCJhZG1pblwiLFwicGFzc3dvcmRcIjpudWxsLFwiYXV0b3JpemFjYW9cIjpcIlJPTEVfQURNSU5cIixcInRva2VuXCI6bnVsbH0iLCJpc3MiOiJici5nb3Yuc3AuZmF0ZWMiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY1NDgzMDU4M30.onzGWBDokAX-WksLwMdwLOrd5kT6hVXkA9d7GFGnmq7xtp69dVNgxpAo7OS32aGFpbURkj0D34cJfDy_Ee-1WQ";
       if(this.novo.senha!==this.confirmaSenha || this.novo.senha=='' ){
         alert('Falha no cadastro')
       }else{
+           axios.post("/usuario/", this.novo).then(snapshot=>{
+                  console.log(snapshot)
+                  alert('usuario cadastrado')
+                  router.replace({ path: '/principal' })
+                }).catch(error=>{
+                  console.log(error)
+                  alert('Falha no cadastro: '+error.message)
+                })
         alert('cadastro')
       }      
   

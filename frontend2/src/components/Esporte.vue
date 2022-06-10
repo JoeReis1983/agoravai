@@ -1,3 +1,7 @@
+<script setup>
+import Login from '../components/Login.vue'
+
+</script>
 <template>
   <main>        
     
@@ -27,6 +31,15 @@ Segundo dirigentes ouvidos pela reportagem, os documentos estão praticamente pr
           </div>
         </div>
       </section>
+
+       <div class="modal" :class="{'is-active':showModal}">
+       <div class="modal-background"></div>
+       <div class="modal-content">         
+           <Login />         
+       </div>
+       <button class="modal-close" @click="showModal=!showModal"></button> 
+     </div>
+
    </main>
 </template>
 <style scoped>
@@ -44,13 +57,21 @@ Segundo dirigentes ouvidos pela reportagem, os documentos estão praticamente pr
 export default {
   data() {
     return {
-      assinante:false
+      assinante:false,
+      showModal:false
+
     }
   },
 
   methods: {
     saibaMais(link){
-      window.open(link)
+      if(true){
+      window.open(link)        
+      }else{
+
+        this.showModal=!this.showModal
+
+      }
     }
   },
 }

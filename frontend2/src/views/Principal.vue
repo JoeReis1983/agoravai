@@ -31,7 +31,7 @@ import Login from '../components/Login.vue'
           <a class="button is-primary" @click="showModal=!showModal">
             <strong>Login</strong>
           </a>
-            <a class="button is-info" @click="cadastro">
+            <a class="button is-info" @click="cadastro" v-if="true">
             Administrar
           </a>
           <a class="button is-danger">

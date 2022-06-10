@@ -1,0 +1,16 @@
+com/agoravai/celso/controller/View$UsuarioResumo.class
+com/agoravai/celso/controller/UsuarioControl.class
+com/agoravai/celso/service/SegurancaService.class
+com/agoravai/celso/controller/HomeControl.class
+com/agoravai/celso/security/SecurityConfig.class
+com/agoravai/celso/exception/RegistroException.class
+com/agoravai/celso/controller/View.class
+com/agoravai/celso/repository/UsuarioRepository.class
+com/agoravai/celso/repository/PerfilRepository.class
+com/agoravai/celso/security/JwtAuthenticationFilter.class
+com/agoravai/celso/service/SegurancaServiceImpl.class
+com/agoravai/celso/CelsoApplication.class
+com/agoravai/celso/controller/View$UsuarioCompleto.class
+com/agoravai/celso/entity/Usuario.class
+com/agoravai/celso/controller/View$PerfilResumo.class
+com/agoravai/celso/entity/Perfil.class
