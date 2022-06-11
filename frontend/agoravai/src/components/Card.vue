@@ -35,7 +35,9 @@ export default {
   },
   methods: {
     status(){
-      this.media=((parseFloat(this.dados.p1)+parseFloat(this.dados.p2)+parseFloat(this.dados.trabalho))/3).toFixed(2)      
+
+      this.media=((parseFloat(this.dados.p1.replaceAll(',','.'))
+      +parseFloat(this.dados.p2.replaceAll(',','.'))+parseFloat(this.dados.trabalho.replaceAll(',','.')))/3).toFixed(2)      
     }
   },
   created() {

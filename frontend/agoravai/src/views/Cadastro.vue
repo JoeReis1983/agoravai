@@ -1,7 +1,10 @@
+<script setup>
+import NavBar from '../components/NavBar.vue';
 
+</script>
 <template>
   <div>
-    
+    <NavBar />
   
     <div class="glassCadastro">
       
@@ -12,31 +15,25 @@
       <h1 class="titleGlass">CADASTRO DE USUARIOS</h1>
     </div>
     <div class="field ">
-        <p class="control has-icons-left has-icons-right ">
+        <p class="control">
           <input class="input" v-model="novo.nome" type="text" placeholder="Login">
-          <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
-          </span>
-          <span class="icon is-small is-right">
-            <i class="fas fa-check"></i>
-          </span>
         </p>
       </div>
       <div class="field">
-        <p class="control has-icons-left">
-          <input class="input" v-model="novo.senha" type="password" placeholder="Senha">
-          <span class="icon is-small is-left">
-            <i class="fas fa-lock"></i>
-          </span>
+        <p class="control">
+          <input class="input" v-model="novo.senha" type="password" placeholder="Senha">          
         </p>
       </div>
        <div class="field">
-        <p class="control has-icons-left">
-          <input class="input" v-model="confirmaSenha" type="password" placeholder="Confirme a Senha">
-          <span class="icon is-small is-left">
-            <i class="fas fa-lock"></i>
-          </span>
+        <p class="control">
+          <input class="input" v-model="confirmaSenha" type="password" placeholder="Confirme a Senha">          
         </p>
+      </div>
+      <div class="field select is-fullwidth">
+        <select v-model="perfil">
+          <option value="user">Usuario </option>
+          <option value="admin">Administrador</option>
+        </select>
       </div>
       <div class="field">
         <p class="control">
@@ -63,31 +60,67 @@ export default{
     return {
       novo:{
         nome:'',
-        senha:''
-      },
+        senha:''},
+      perfil:'user',
       confirmaSenha:''
       
     }
   },
   methods: { 
     cadastrar(){
-      axios.defaults.headers.common['Authorization'] = "eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyRGV0YWlscyI6IntcInVzZXJuYW1lXCI6XCJhZG1pblwiLFwicGFzc3dvcmRcIjpudWxsLFwiYXV0b3JpemFjYW9cIjpcIlJPTEVfQURNSU5cIixcInRva2VuXCI6bnVsbH0iLCJpc3MiOiJici5nb3Yuc3AuZmF0ZWMiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY1NDgzMDU4M30.onzGWBDokAX-WksLwMdwLOrd5kT6hVXkA9d7GFGnmq7xtp69dVNgxpAo7OS32aGFpbURkj0D34cJfDy_Ee-1WQ";
+      axios.defaults.headers.common['Authorization'] = this.$store.getters.TOKEN
       if(this.novo.senha!==this.confirmaSenha || this.novo.senha=='' ){
-        alert('Falha no cadastro')
+        this.$toast.error(`Dados invalidos.`,{
+          position:"bottom",
+          duration:1000,
+          dismissible:true
+          });
       }else{
-           axios.post("/usuario/", this.novo).then(snapshot=>{
-                  console.log(snapshot)
-                  alert('usuario cadastrado')
-                  router.replace({ path: '/principal' })
-                }).catch(error=>{
-                  console.log(error)
-                  alert('Falha no cadastro: '+error.message)
-                })
-        alert('cadastro')
-      }      
-  
-
-      
+        if(this.perfil=='user'){
+        this.cadastraUser()
+        }else{
+          this.cadastraAdmin()
+        }        
+          }
+    },
+    cadastraUser(){
+      axios.post("/usuario/user", this.novo).then(snapshot=>{
+          this.$toast.success(this.novo.nome +` Cadastrado.`,{
+            position:"bottom",
+            duration:5000,
+            dismissible:true
+            });
+            router.replace({ path: '/principal' })
+            }).catch(error=>{
+              this.$toast.error(`Falha no cadastro.`,{
+                position:"bottom",
+                duration:1000,
+                dismissible:true
+                });
+              console.log(error)                  
+              })
+      },      
+    cadastraAdmin(){
+      axios.post("/usuario/admin", this.novo).then(snapshot=>{
+          this.$toast.success(this.novo.nome +` Cadastrado.`,{
+            position:"bottom",
+            duration:5000,
+            dismissible:true
+            });
+            router.replace({ path: '/principal' })
+            }).catch(error=>{
+              this.$toast.error(`Falha no cadastro.`,{
+                position:"bottom",
+                duration:1000,
+                dismissible:true
+                });
+              console.log(error)                  
+              })
+      }
+  },
+  created() {
+    if(this.$store.getters.PERFIL!="ROLE_ADMIN"){
+      router.replace({ path: '/' })
     }
   },
 }
