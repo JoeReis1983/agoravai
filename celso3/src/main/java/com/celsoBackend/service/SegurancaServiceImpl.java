@@ -14,14 +14,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.celsoBackend.entity.Trabalho;
+
 import com.celsoBackend.entity.Autorizacao;
 import com.celsoBackend.entity.Usuario;
 import com.celsoBackend.entity.Aluno;
 import com.celsoBackend.exception.RegistroNaoEncontradoException;
 import com.celsoBackend.repository.AutorizacaoRepository;
 import com.celsoBackend.repository.UsuarioRepository;
-import com.celsoBackend.repository.TrabalhoRepository;
 import com.celsoBackend.repository.AlunoRepository;
 
 @Service("segurancaService")
@@ -32,9 +31,6 @@ public class SegurancaServiceImpl implements SegurancaService {
 
     @Autowired
     private UsuarioRepository usuarioRepo;
-
-    @Autowired
-    private TrabalhoRepository trabalhoRepo;
 
     @Autowired
     private AlunoRepository alunoRepo;
@@ -49,7 +45,7 @@ public class SegurancaServiceImpl implements SegurancaService {
         Autorizacao aut = autRepo.findByNome(autorizacao);
         if(aut == null) {
             aut = new Autorizacao();
-            aut.setNome(autorizacao);
+            aut.setNome(autorizacao); 
             autRepo.save(aut);
         }
         Usuario usuario = new Usuario();
@@ -121,21 +117,7 @@ public class SegurancaServiceImpl implements SegurancaService {
           .map(Autorizacao::getNome).collect(Collectors.toList())
           .toArray(new String[usuario.getAutorizacoes().size()]))
       .build();
-    }
-
-    @Override
-    public Trabalho criarTrabalho(String titulo, String texto) {
-        Trabalho trabalho = new Trabalho();
-        trabalho.setTitulo(titulo);
-        trabalho.setTexto(texto);
-        trabalhoRepo.save(trabalho);
-        return trabalho;
-    }
-
-    @Override
-    public List<Trabalho> buscarTodosTrabalhos() {
-      return trabalhoRepo.findAll();
-    }
+    }    
 
     @Override
     public List<Aluno> buscarTodosAlunos() {

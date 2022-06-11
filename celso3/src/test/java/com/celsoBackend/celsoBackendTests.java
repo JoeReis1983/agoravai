@@ -14,11 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.celsoBackend.entity.Trabalho;
 import com.celsoBackend.entity.Autorizacao;
 import com.celsoBackend.entity.Usuario;
 import com.celsoBackend.entity.Aluno;
-import com.celsoBackend.repository.TrabalhoRepository;
 import com.celsoBackend.repository.AutorizacaoRepository;
 import com.celsoBackend.repository.UsuarioRepository;
 import com.celsoBackend.repository.AlunoRepository;
@@ -33,9 +31,6 @@ class celsoBackendTests {
 
   @Autowired
   private AutorizacaoRepository autRepo;
-
-  @Autowired
-  private TrabalhoRepository antRepo;
 
   @Autowired
   private AlunoRepository alunoRepo;
@@ -99,17 +94,7 @@ class celsoBackendTests {
     aut.getUsuarios().add(usuario);
     autRepo.save(aut);
     assertNotNull(aut.getUsuarios().iterator().next().getId());
-  }
-
-  @Test
-  void testaInsercaoTrabalho() {
-    Trabalho trabalho = new Trabalho();
-    trabalho.setTitulo("titulo");
-    trabalho.setTexto("texto");
-    antRepo.save(trabalho);
-  }
-
-  
+  }  
 
   @Test
   void testaAutorizacao() {

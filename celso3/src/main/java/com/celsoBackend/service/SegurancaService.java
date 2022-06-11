@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.celsoBackend.entity.Aluno;
 import com.celsoBackend.entity.Autorizacao;
-import com.celsoBackend.entity.Trabalho;
 import com.celsoBackend.entity.Usuario;
 
 public interface SegurancaService extends UserDetailsService{
@@ -25,11 +24,11 @@ public interface SegurancaService extends UserDetailsService{
 
     
     public Aluno criarAluno(String nome, String p1, String p2, String trabalho);
-    public Trabalho criarTrabalho(String titulo, String texto);
+    
 
     
     public List<Aluno> buscarTodosAlunos();
     
-    public List<Trabalho> buscarTodosTrabalhos();
+    
     
 }

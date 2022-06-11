@@ -7,9 +7,7 @@ public class View {
   public static class UsuarioCompleto extends UsuarioResumo {}
 
   public static class AutorizacaoResumo {}
-
-  public static class TrabalhoCompleto {}
-
+  
   public static class AlunoCompleto {}
   
 }
