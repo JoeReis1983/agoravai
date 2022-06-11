@@ -51,7 +51,7 @@
           <a class="button is-primary" @click="cadastro">
             <strong>Cadastro</strong>
           </a>
-          <a class="button is-danger">
+          <a class="button is-danger" @click="sair">
             Sair
           </a>
         </div>
@@ -73,7 +73,11 @@ export default{
       
     }
   },
-  methods: { 
+  methods: {
+    sair(){
+      console.log('sair')
+      console.log(this.$store.getters.TOKEN  )
+    }, 
     cadastro(){
       router.replace({ path: '/cadastro' })
     }

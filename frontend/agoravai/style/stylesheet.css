@@ -1,20 +1,22 @@
 .red{
   color:red;
 }
-html{
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-image: url("../src/assets/background.jpg");
-}
+.fullDark{
+  background: rgb(2,0,36);
+background: -moz-linear-gradient(90deg, rgba(2, 0, 36, 0.603) 0%, rgba(0,0,238,1) 50%, rgba(0,0,0,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,238,1) 50%, rgba(0,0,0,1) 100%);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,238,1) 50%, rgba(0,0,0,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#000000",GradientType=1);
+  }
 
 .glassLogin{
 width:50%;
 height: 50vh;  
-background: rgba(255, 255, 255, 0.0);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(3px);
--webkit-backdrop-filter: blur(3px);
+background: rgba(0, 0, 0, 0.534);
+border-radius: 36px;
+box-shadow: 0 4px 30px rgb(0, 0, 0);
+backdrop-filter: blur(1px);
+-webkit-backdrop-filter: blur(1px);
 border: 1.5px solid rgba(2, 2, 2, 0.63);
 
   display: flex;
