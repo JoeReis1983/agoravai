@@ -1,55 +1,24 @@
 <template >
-<nav class="navbar is-gray" role="navigation" aria-label="main navigation">
+<nav class="navbar is-black" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item nomeBarra">
-      Celso <br> Reis
-    </a>
+    
+          <a class="button is-link ml-3" @click="cadastro">
+            <strong>HOME</strong>
+          </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
+    
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item">
-        Politica
-      </a>
-
-      <a class="navbar-item">
-        Esportes
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          Internacional
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            Humor
-          </a>
-          <a class="navbar-item">
-            Biblicas
-          </a>
-          <a class="navbar-item">
-            Pensadores
-          </a>
-          <!-- <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a> -->
-        </div>
-      </div>
-    </div>
-
+    
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
           <a class="button is-primary" @click="cadastro">
             <strong>Cadastro</strong>
+          </a>
+          <a class="button is-info" @click="cadastroAluno">
+            <strong>Cadastro Alunos</strong>
           </a>
           <a class="button is-danger" @click="sair">
             Sair
@@ -80,6 +49,9 @@ export default{
     }, 
     cadastro(){
       router.replace({ path: '/cadastro' })
+    },
+    cadastroAluno(){
+      router.replace({ path: '/cadastroAluno' })
     }
   },
 }

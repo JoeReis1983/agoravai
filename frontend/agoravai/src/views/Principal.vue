@@ -6,32 +6,41 @@ import Card from '../components/Card.vue';
 <template>
   <main>
     <NavBar />
-    <div class="columns">
-      <div class="column is-6"><Card :dados='dadosUser'/></div>
-      <div class="column is-6"><Card /></div>
-      
-
-    </div>
+    <div class="columns is-mobile">
+  <div class="column is-three-fifths is-offset-one-fifth">
+    
+    <Card  v-for="user in dadosUser" :key="user" :dados='user'/>
+    
+  </div>
+</div>
     
   </main>
 </template>
 
 <script>
 import router from "../router"
+import axios from 'axios'
 
 export default{
   data() {
     return {
-      dadosUser:{
-        nome:"nome da pessoa",
-        p1:9,
-        p2:5,
-        trabalho:8
-      }
-      
+      dadosUser:[]      
+    }
+  },
+  methods: {
+    buscaUsuarios(){
+      axios.defaults.headers.common['Authorization'] = this.$store.getters.TOKEN
+       axios.get("/aluno").then(snapshot=>{
+        snapshot.data.forEach(element => {
+          this.dadosUser.push(element)
+          console.log(this.dadosUser)          
+        });
+       })
+
     }
   },
 created() {
+  this.buscaUsuarios()
 },
 
 }

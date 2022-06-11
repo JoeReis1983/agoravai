@@ -40,13 +40,13 @@ export default{
     }
   },
   methods: { 
-    autenticar(){
-     
+    autenticar(){     
       const formData = {
                 username: this.username,
                 password: this.password
             }
-            axios.post("/login/", formData).then(snapshot=>{
+            axios.post("/login/", formData)
+            .then(snapshot=>{
                   console.log(snapshot)
                   this.$store.dispatch('SAVE_TOKEN',snapshot.data.token)
                    this.$toast.success(`Hey! Bem vindo.`,{
