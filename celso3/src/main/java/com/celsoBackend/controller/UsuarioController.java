@@ -50,12 +50,22 @@ public class UsuarioController {
     return segurancaService.buscarUsuarioPorNome(nome);
   }
 
-  @JsonView(View.UsuarioResumo.class)
-  
-  @PostMapping
+  @JsonView(View.UsuarioResumo.class)  
+  @PostMapping(value="/user")
   public ResponseEntity<Usuario> cadastraNovoUsuario(@RequestBody Usuario usuario,
-        UriComponentsBuilder uriComponentsBuilder) {
+        UriComponentsBuilder uriComponentsBuilder) {          
     usuario = segurancaService.criarUsuario(usuario.getNome(), usuario.getSenha(), "ROLE_USUARIO");
+    HttpHeaders responseHeaders = new HttpHeaders();
+    responseHeaders.setLocation(
+        uriComponentsBuilder.path(
+            "/usuario/" + usuario.getId()).build().toUri());
+    return new ResponseEntity<Usuario>(usuario, responseHeaders, HttpStatus.CREATED);
+  }
+  @JsonView(View.UsuarioResumo.class)  
+  @PostMapping(value="/admin")
+  public ResponseEntity<Usuario> cadastraNovoAdmin(@RequestBody Usuario usuario,
+        UriComponentsBuilder uriComponentsBuilder) {          
+    usuario = segurancaService.criarUsuario(usuario.getNome(), usuario.getSenha(), "ROLE_ADMIN");
     HttpHeaders responseHeaders = new HttpHeaders();
     responseHeaders.setLocation(
         uriComponentsBuilder.path(

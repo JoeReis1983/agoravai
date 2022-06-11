@@ -1,15 +1,17 @@
+<script setup>
+import NavBar from '../components/NavBar.vue';
 
+</script>
 <template>
   <div>
-    
-  
+    <NavBar />
     <div class="glassCadastro">
       
 
       <div class="columns is-flex is-mobile">
   <div class="column is-11 is-offset-1">
     <div>
-      <h1 class="titleGlass">CADASTRO DE Alunos</h1>
+      <h1 class="titleGlass">CADASTRO DE ALUNOS</h1>
     </div>
     <div class="field ">
         <p class="control has-icons-left">
@@ -88,10 +90,12 @@ export default{
                   console.log(error)
                   
                 })        
-      }      
-  
-
-      
+      }
+    }
+  },
+  created() {
+    if(this.$store.getters.PERFIL!="ROLE_ADMIN"){
+      router.replace({ path: '/' })
     }
   },
 }

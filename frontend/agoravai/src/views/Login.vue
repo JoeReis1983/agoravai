@@ -47,6 +47,7 @@ export default{
             }
             axios.post("/login/", formData)
             .then(snapshot=>{
+                  this.pegaPerfil(snapshot.data.token)
                   console.log(snapshot)
                   this.$store.dispatch('SAVE_TOKEN',snapshot.data.token)
                    this.$toast.success(`Hey! Bem vindo.`,{
@@ -54,7 +55,10 @@ export default{
                       duration:1000,
                       dismissible:true
                     });
+                    setTimeout(() => {
                   router.replace({ path: '/principal' })
+                      
+                    }, 1000);
                 }).catch(error=>{
                   console.log(error)
                   this.$toast.error('Falha na autenticação: '+error.message,{
@@ -63,6 +67,12 @@ export default{
                       dismissible:true
                     })
                 })
+    },
+    pegaPerfil(token){
+      axios.defaults.headers.common['Authorization'] = token   
+      axios.get('/usuario/nome?nome='+this.username).then(snp=>{
+        this.$store.dispatch('SAVE_PERFIL',snp.data.autorizacoes[0].nome)
+      })
     }
   },
 }
